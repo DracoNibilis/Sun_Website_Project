@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Page 2</title>
+	<script src="https://d3js.org/d3.v7.min.js"></script> 
+	<style type="text/css">
+		<!-- Font-face declaration -->
+		@font-face {font-family: "Viner Hand ITC"; src: url("//db.onlinewebfonts.com/t/99d504622af69baa79ef84fad6985031.eot"); src: url("//db.onlinewebfonts.com/t/99d504622af69baa79ef84fad6985031.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/99d504622af69baa79ef84fad6985031.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/99d504622af69baa79ef84fad6985031.woff") format("woff"), url("//db.onlinewebfonts.com/t/99d504622af69baa79ef84fad6985031.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/99d504622af69baa79ef84fad6985031.svg#Viner Hand ITC") format("svg"); 
+		} 
+		
+        body { 
+		margin: 0 auto;
+		width:1000px;
+		background-color: black;
+		font-family: "Viner Hand ITC";
+		color:white;
+		}
+		h1 { 
+			color: white;
+			}
+		h2 { 
+			color: white;
+		
+			}
+		p {
+			color: white;
+		}
+		ul {
+			color: white;
+			display: table;
+			margin: 0 auto;
+		}
+		table {
+			color: white;
+			width:1000px;
+			padding: 0;
+			border: 10;
+			height: 100px;
+			background-color: black;
+			font-size: 40px;
+			}
+		rect:hover {fill:red;}
+
+		.myDiv {
+			background-color: grey;
+				}
+    </style>
+</head>
+<body>
+
+	<!-- Header text -->
+	<h1 align="center"> Page 2 </h1>
+	<!-- Top Image -->
+	<img src="images/sun_spots.gif" alt="Sky_image">
+	<!-- Text to animate -->
+	<h2 id="sun" align="center"> --== SUN SPOTS ==--</h2>
+	
+	<!-- Table of Buttons To Other Pages -->
+	<table border="5">
+		<tr>
+			<!-- Button for Main Menu -->
+			<td align="center" width="250"><a href="main_page.html"><img  src="images/button_home.jpg"></a></td>
+			<!-- Button for Page 1 login details -->
+			<td align="center" width="250"><a href="page_1.html"><img  src="images/button_sun.jpg"></a></td>
+			<!-- Button for Page 2 plot1 -->
+			<td align="center" width="250"><a href="page_2.html"><img  src="images/button_spots.jpg"></a></td>
+			<!-- Button for Page 3 plot2 -->
+			<td align="center" width="250"><a href="page_3.html"><img  src="images/button_orbit.jpg"></a></td>
+		</tr>
+		
+	</table>
+		<!-- Some text about the sun -->
+	<p> Plot for mean amount of sunspots from 31/01/2019 - 31/12/2020: </p>
+	<!-- select size of the plot -->
+	Select Plot Size:
+	<select id="plotHeight">
+		<option value="200">200 </option>
+		<option value="300">300</option>
+		<option value="400">400</option>
+	</select>
+	
+	<!-- select colort of the plot --> 
+	Select Plot Color:
+	<input type="color" id="plotColor">
+	
+	<button onclick="drawPlot()">Draw Plot</button>
+	
+	<!-- Div for Plot --> 	
+	<div id="plot_csv" class="myDiv"></div>
+	
+	<!-- Add information about sun spots -->
+	<p>According to <a href="https://en.wikipedia.org/wiki/Sunspot">Wikipedia</a> Sunspots are phenomena on the Sun's photosphere that appear as temporary spots that are darker than the surrounding areas. They are regions of reduced surface temperature caused by concentrations of magnetic flux that inhibit convection. Sunspots appear within active regions, usually in pairs of opposite magnetic polarity. Their number varies according to the approximately 11-year solar cycle.
+	<br>
+	Individual sunspots or groups of sunspots may last anywhere from a few days to a few months, but eventually decay. Sunspots expand and contract as they move across the surface of the Sun, with diameters ranging from 16 km (10 mi) to 160,000 km (100,000 mi). Larger sunspots can be visible from Earth without the aid of a telescope.[5] They may travel at relative speeds, or proper motions, of a few hundred meters per second when they first emerge.
+	<br>
+	Indicating intense magnetic activity, sunspots accompany other active region phenomena such as coronal loops, prominences, and reconnection events. Most solar flares and coronal mass ejections originate in these magnetically active regions around visible sunspot groupings. Similar phenomena indirectly observed on stars other than the Sun are commonly called starspots, and both light and dark spots have been measured</p>
+
+<!-- Add picture of sun spots -->	
+<p> SUNSPOTS: </p>
+<img src="/images/sunspots_2.jpg" alt="sunspots">
+
+<!-- Link to source page --> 
+<p align="center"> === All Rights Reserved <a href="https://solarsystem.nasa.gov/solar-system/sun/overview/">NASA</a> === </p>
+	
+	
+</body>
+
+<script>
+
+function drawPlot(){
+	// Reading data from CSV by Python Server
+	d3.csv("sun_spots.csv").then(function(data){
+		console.log(data);
+		
+		//Values for plot height 
+		var height = document.getElementById("plotHeight").value;
+		
+		//Value for plot color
+		var plotColor = document.getElementById("plotColor").value;
+		
+		//Convert to numbers
+		data.forEach(function(d){
+			d.Monthly_Mean_Total_Sunspot_Number = Number(d.Monthly_Mean_Total_Sunspot_Number);
+			})
+			
+		// Create a scale Y
+		var yScale = d3.scaleLinear()
+			.domain([0, d3.max(data, function(d){
+				return d.Monthly_Mean_Total_Sunspot_Number;
+			})])
+			.range([height,0]);
+		
+		//Create a scale for X
+		var xScale = d3.scaleBand()
+			.domain(data.map(function(d){
+				return d.Date;
+			}))
+			.range([0,744]); // x value of bar 31 * amount of bars 24
+			
+		// Create y Axis
+		var yAxis = d3.axisLeft()
+			.scale(yScale);
+		
+		//Create X Axis
+		var xAxis = d3.axisBottom()
+			.scale(xScale);
+		
+		//Delete existing plots
+		d3.select("#plot_csv").selectAll("*").remove();
+		
+		//Create container for data plot
+		let svgContainer = d3.select("#plot_csv").append("svg")
+			.attr("width", 1000)
+			.attr("height", 500);
+		
+		// Create rectangle for data plot 
+		let myRectangle = svgContainer.selectAll("rect")
+			.data(data);
+		
+		//Add Attributes to rectangle	
+		myRectangle.enter()
+			.append("rect")
+				
+				.attr("x", function(d,i){
+					return 50 + (i*31);
+				})
+				.attr("y", function(d){
+					return yScale(d.Monthly_Mean_Total_Sunspot_Number);
+				})
+				.attr("width", 30)
+				.attr("height", function(d){
+					return height - yScale(d.Monthly_Mean_Total_Sunspot_Number);	
+				})
+				.attr("fill", plotColor); 
+		
+		// Add yAxis to plot
+		svgContainer.append("g")
+			.attr("transform", "translate(45,0)")
+			.call(yAxis);
+		
+		// Add xAxis to plot
+		svgContainer.append("g")
+			.attr("transform", "translate(50," + height + ")")
+			.call(xAxis)
+			.selectAll("text")
+				.attr("transform", "rotate(60)")
+				.attr("text-anchor", "start")
+				.attr("x", "9");
+				
+		// END OF  FUNCTION !
+		});
+}
+
+ 
+</script>
+</html>

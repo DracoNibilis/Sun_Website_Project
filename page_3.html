@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Page 3</title>
+	<script src="https://d3js.org/d3.v7.min.js"></script> 
+	<style type="text/css">
+		<!-- Font-face declaration -->
+		@font-face {font-family: "Viner Hand ITC"; src: url("//db.onlinewebfonts.com/t/99d504622af69baa79ef84fad6985031.eot"); src: url("//db.onlinewebfonts.com/t/99d504622af69baa79ef84fad6985031.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/99d504622af69baa79ef84fad6985031.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/99d504622af69baa79ef84fad6985031.woff") format("woff"), url("//db.onlinewebfonts.com/t/99d504622af69baa79ef84fad6985031.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/99d504622af69baa79ef84fad6985031.svg#Viner Hand ITC") format("svg"); 
+		} 
+		
+        body { 
+		margin: 0 auto;
+		width:1000px;
+		background-color: black;
+		font-family: "Viner Hand ITC";
+		}
+		h1 { 
+			color: white;
+			}
+		h2 { 
+			color: white;
+		
+			}
+		p {
+			color: white;
+		}
+		ul {
+			color: white;
+			display: table;
+			margin: 0 auto;
+		}
+		table {
+			color: white;
+			width:1000px;
+			padding: 0;
+			border: 10;
+			height: 100px;
+			background-color: black;
+			font-family: "Lucida Console", "Courier New", monospace;
+			font-size: 40px;
+			}
+		rect:hover {fill:blue;}
+
+    </style>
+</head>
+<body>
+	<!-- Header text -->
+	<h1 align="center"> Page 3 </h1>
+	<!-- Top Image -->
+	<img src="images/try_page_3_pic.jpg" alt="Sky_image">
+	<!-- Text to header 2 -->
+	<h2 id="sun" align="center"> --== ORBIT ==--</h2>
+	
+	<!-- Table of Buttons To Other Pages -->
+	<table border="5">
+		<tr>
+			<!-- Button for Main Menu -->
+			<td align="center" width="250"><a href="main_page.html"><img  src="images/button_home.jpg"></a></td>
+			<!-- Button for Page 1 login details -->
+			<td align="center" width="250"><a href="page_1.html"><img  src="images/button_sun.jpg"></a></td>
+			<!-- Button for Page 2  -->
+			<td align="center" width="250"><a href="page_2.html"><img  src="images/button_spots.jpg"></a></td>
+			<!-- Button for Page 3  -->
+			<td align="center" width="250"><a href="page_3.html"><img  src="images/button_orbit.jpg"></a></td>
+		</tr>
+		
+	</table>
+	<!-- Text about sun orbit -->
+	<h2> Sun Orbit </h2>
+	<p>The Sun is located in the Milky Way galaxy in a spiral arm called the Orion Spur that extends outward from the Sagittarius arm.The Sun orbits the center of the Milky Way, bringing with it the planets, asteroids, comets, and other objects in our solar system. Our solar system is moving with an average velocity of 450,000 miles per hour (720,000 kilometers per hour). But even at this speed, it takes about 230 million years for the Sun to make one complete trip around the Milky Way.
+	<!-- add image -->
+	<img src="/images/galaxy.jpg"></a>
+	<br>
+	The Sun rotates on its axis as it revolves around the galaxy. Its spin has a tilt of 7.25 degrees with respect to the plane of the planets’ orbits. Since the Sun is not solid, different parts rotate at different rates. At the equator, the Sun spins around once about every 25 Earth days, but at its poles, the Sun rotates once on its axis every 36 Earth days.
+	</p>
+	<h2> Sun Surrounding </h2>
+	<p>
+	Our solar system consists of our star, the Sun, and everything bound to it by gravity – the planets Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune; dwarf planets such as Pluto; dozens of moons; and millions of asteroids, comets, and meteoroids.
+	Our solar system extends much farther than the eight planets that orbit the Sun. The solar system also includes the Kuiper Belt that lies past Neptune's orbit. This is a sparsely occupied ring of icy bodies, almost all smaller than the most popular Kuiper Belt Object – dwarf planet Pluto.
+	Beyond the fringes of the Kuiper Belt is the Oort Cloud. This giant spherical shell surrounds our solar system. It has never been directly observed, but its existence is predicted based on mathematical models and observations of comets that likely originate there.
+
+	The Oort Cloud is made of icy pieces of space debris - some bigger than mountains – orbiting our Sun as far as 1.6 light-years away. This shell of material is thick, extending from 5,000 astronomical units to 100,000 astronomical units. One astronomical unit (or AU) is the distance from the Sun to Earth, or about 93 million miles (150 million kilometers). The Oort Cloud is the boundary of the Sun's gravitational influence, where orbiting objects can turn around and return closer to our Sun.
+
+	The Sun's heliosphere doesn't extend quite as far. The heliosphere is the bubble created by the solar wind – a stream of electrically charged gas blowing outward from the Sun in all directions. The boundary where the solar wind is abruptly slowed by pressure from interstellar gases is called the termination shock. This edge occurs between 80-100 astronomical units.
+	</p>
+	<h2> Ranking of Planets </h2>
+	<!-- plot here -->
+	<!-- Input for time of plot appearing -->
+	<select id="anim">
+		<!-- input options -->
+		<option value="100">Fast</option>
+		<option value="2000">Medium</option>
+		<option value="10000">Slow</option>
+	</select>
+	<!-- On click show plot by animation() function -->
+	<button onclick="animation()">Show Chart</button>
+
+	<!-- Plot for array data -->
+	<div id="rank_plot"></div>
+	
+	</p>
+	
+	<!-- On click show ranking of planets -->
+	<button onclick="showRanking()">SHOW RANKING</button>
+	
+	<h4 id="rank" color="black">
+		
+		 MERCURY &nbsp;&nbsp;&nbsp;	20 <br>
+		 WENUS &nbsp;&nbsp;&nbsp;	33	<br>
+		 EARTH &nbsp;&nbsp;&nbsp;	58 <br>
+		 MARS &nbsp;&nbsp;&nbsp;	17 <br>
+	     JUPITER &nbsp;&nbsp;&nbsp;	54	<br>
+		 SATURN &nbsp;&nbsp;&nbsp;	15 <br>
+		 URANUS &nbsp;&nbsp;&nbsp;	44 <br>
+		 NEPTUNE	 &nbsp;&nbsp;&nbsp; 90 <br>
+
+	</h4>
+	
+	
+	<!-- Link to source page --> 
+	<p align="center"> === All Rights Reserved <a href="https://solarsystem.nasa.gov/solar-system/sun/overview/">NASA</a> === 
+	
+	</p>
+
+</body>
+<script>
+// Function to create plot
+function animation(){
+	// Get data from input - time data 
+	var dur_value = document.getElementById("anim").value;
+	// Create array of data for plot 
+	var myArray = [20,33,58,17,64,15,44, 90];
+	var myPlanets = ["Mercury", "Wenus","Earth",  "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+
+	//Delete existing plots
+	d3.select("#rank_plot").selectAll("*").remove();
+	//Create svg container 
+	var svgContainer = d3.select("#rank_plot").append("svg")
+		.attr("width",800)
+		.attr("height", 400);
+		
+	// Create rectangle for plot 
+	let myRectangle = svgContainer.selectAll("rect")
+		.data(myArray);
+		
+	// Add attribute to rectangle
+	myRectangle.enter()
+		.append("rect")
+		//Add transition
+			.transition()
+			// Transition time from input
+			.duration(dur_value)
+			// Set x value based on data from array
+			.attr("x", function(d,i){return 50 +(i*51);})
+			// Set y value based on data from array
+			.attr("y", function(d){
+				return 300 - d;
+			})
+			// Set width of bar
+			.attr("width", 50)
+			// Set height based on data from array
+			.attr("height", function(d){return d;})
+			// Color of bars
+			.attr("fill", "yellow");
+			
+	// Add labels
+	let myLabel = svgContainer.selectAll("text")
+		.data(myArray);
+		
+	// Fill labels with text
+	myLabel.enter()
+		.append("text")
+			// Transition for labels 
+			.transition()
+			// Set time for trasition 
+			.duration(3000)
+			.attr("x", function(d,i){return 70 +(i*51);})
+			.attr("y", function(d){
+				return 315 - d;
+			})
+			.attr("text-anchor", "middle")
+			.attr("fill", "red")
+			.text(function(myArray){
+				return myArray;
+				});
+	
+};
+// Show ranking of planets in color red 
+function showRanking(){
+	// Use DOM to get id from ranking "rank" to set the color
+	document.getElementById("rank").style.color="red";
+	}
+
+</script>
+</html>

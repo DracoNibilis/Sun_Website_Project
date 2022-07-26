@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Page 1</title>
+	<script src="https://d3js.org/d3.v7.min.js"></script>
+	<style type="text/css">
+		<!-- Font-face declaration -->
+		@font-face {font-family: "Viner Hand ITC"; src: url("//db.onlinewebfonts.com/t/99d504622af69baa79ef84fad6985031.eot"); src: url("//db.onlinewebfonts.com/t/99d504622af69baa79ef84fad6985031.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/99d504622af69baa79ef84fad6985031.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/99d504622af69baa79ef84fad6985031.woff") format("woff"), url("//db.onlinewebfonts.com/t/99d504622af69baa79ef84fad6985031.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/99d504622af69baa79ef84fad6985031.svg#Viner Hand ITC") format("svg"); 
+		} 
+		
+        body { 
+		margin: 0 auto;
+		width:1000px;
+		background-color: black;
+		font-family: "Viner Hand ITC";
+		}
+		h1 { 
+			color: white;
+		}
+
+		p { 
+			color: white;
+		}
+		ul {
+			color: white;
+		}
+		table {
+			color: white;
+			width:1000px;
+			padding: 0;
+			border: 10;
+			height: 100px;
+			background-color: black;
+			font-family: "Lucida Console", "Courier New", monospace;
+			font-size: 40px;
+		}
+
+
+
+    </style>
+<body>
+
+	<!-- Header text -->
+	<h1 align="center"> WELCOME </h1>
+	<!-- Top Image -->
+	<img src="images/sky.jpg" alt="Sky_image">
+	<!-- Text for header 2 -->
+	<h2 id="sun" align="center"> --== THE SUN ==--</h2>
+	
+	<!-- Table of Buttons To Other Pages -->
+	<table border="5">
+		<tr>
+			<!-- Button for Main Menu -->
+			<td align="center" width="250"><a href="main_page.html"><img  src="images/button_home.jpg"></a></td>
+			<!-- Button for Page 1 login details -->
+			<td align="center" width="250"><a href="page_1.html"><img  src="images/button_sun.jpg"></a></td>
+			<!-- Button for Page 2  -->
+			<td align="center" width="250"><a href="page_2.html"><img  src="images/button_spots.jpg"></a></td>
+			<!-- Button for Page 3  -->
+			<td align="center" width="250"><a href="page_3.html"><img  src="images/button_orbit.jpg"></a></td>
+		</tr>
+		
+	</table>
+	<!-- Text about the sun -->
+	<p>The Sun has inspired us since ancient times. It’s central to mythology and religion in cultures around the world, including the ancient Egyptians, the Aztecs of Mexico, Native American tribes of North and South America, the Chinese, and many others. Countless musicians have written songs about the Sun. The Beatles had a hit in 1969 with “Here Comes the Sun.” Other popular songs that reference the Sun include: “Walkin’ on the Sun” by Smashmouth; “Ain’t No Sunshine” by Bill Withers; “Walking on Sunshine” by Katrina and the Waves; “Pocketful of Sunshine” by Natasha Bedingfield; and “Let the Sunshine In” by the Fifth Dimension. If you're Superman or a fellow Kryptonian, your powers are heightened by the yellow glow of our Sun, and you can even dispose of dangerous materials, as Superman and Superboy did, by hurling them into the Sun.
+	</p>
+	<p> The Sun page containing:
+		<!-- List of page elements -->
+		<ul>
+			<li> Main Page - HOME - Login information </li>
+			<li> Page 1 - SUN -  Brief description of the Sun </li>
+			<li> Page 2 - SPOTS - Information about Sun Spots</li>
+			<li> Page 3 - ORBIT - Surrounding of the Sun</li>
+		</ul>
+	</p>
+	
+	<p>
+	Please enter Your Email and Password to log in:
+		<!-- Form for login details e-mail and password -->
+		 <form name="myForm"  onsubmit="return validateForm()" method="post" required>
+		 <!-- Input for email -->
+		 Email: <input type="email" name="email">
+		 <input type="submit" value="Submit">
+		 <!-- Input for password -->
+		 Password: <input type="password" name="pass">
+		 <input type="submit" value="Submit">
+		</form> 
+	</p>
+
+	<!-- Link to source page --> 
+	<p align="center"> === All Rights Reserved <a href="https://solarsystem.nasa.gov/solar-system/sun/overview/">NASA</a> === 
+	
+	</p>
+
+</body>
+<script>
+// Function for email and password forms 
+function validateForm() {
+	// Get value from email form
+  var x = document.forms["myForm"]["email"].value;
+	// Get value from password form 
+  var y = document.forms["myForm"]["pass"].value;
+  // Check condition to accept data, if not empty 
+  if (x == "" || y == ""){
+    alert("Email and Password cannot be empty!");
+    return false;
+  } else {
+	alert("Data Correct")
+	return true;
+
+}} 
+
+</script>
+</html>
